@@ -1,15 +1,27 @@
 package com.squarpoint.cegit.presentation
 
-import java.io.FileNotFoundException
+import java.io.EOFException
+import java.io.File
+import java.io.FileInputStream
+
 
 class PresentationReader(name: String = "") {
-    val fileName: String = name
+    var fileName: String = name
+    var fileInputStream: FileInputStream? = null
     fun openFile() {
-        throw FileNotFoundException("Can not open $fileName")
+        fileInputStream = File(fileName).inputStream()
+    }
+
+    fun readChar(): Char {
+        if (fileInputStream == null) {
+            println("File inputstream is invalid")
+            throw EOFException("Invalid stream [$fileName]")
+        }
+        return fileInputStream!!.read().toChar()
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val pReader = PresentationReader("test")
-
+    println(pReader.readChar())
 }
