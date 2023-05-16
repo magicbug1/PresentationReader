@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a5d9851-cfe7-474b-957a-a4f0d9aa8a2d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationReader.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/PresentationReader.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ASP_GM_PLANTILLAS_VARIABLES.presentation.hex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ASP_GM_PLANTILLAS_VARIABLES.presentation.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/PresentationReaderTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ASP_GM_PLANTILLAS_VARIABLES.presentation.hex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ASP_GM_PLANTILLAS_VARIABLES.presentation.txt" afterDir="false" />
+    <list default="true" id="6a5d9851-cfe7-474b-957a-a4f0d9aa8a2d" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/PresentationReaderTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/PresentationReaderTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +58,37 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.PresentationReaderTest (2)">
+    <configuration name="PresentationReaderTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PresentationReader" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
+      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PresentationReaderTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PresentationReader" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
+      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PresentationReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PresentationReader" />
       <extension name="coverage">
@@ -88,6 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PresentationReaderTest (2)" />
+        <item itemvalue="JUnit.PresentationReaderTest (1)" />
         <item itemvalue="JUnit.PresentationReaderTest" />
       </list>
     </recent_temporary>
@@ -101,6 +121,14 @@
       <option name="presentableId" value="Default" />
       <updated>1684254837180</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1684257207676</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684257207676</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,5 +141,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
