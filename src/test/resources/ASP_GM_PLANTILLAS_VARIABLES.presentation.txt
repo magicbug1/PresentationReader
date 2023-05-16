@@ -1,0 +1,560 @@
+BEGIN Presentation PrstGMPlantillas
+    Idchannel = "ASP_GM_PLANTILLAS_VARIABLES"
+    Idnode = "ASP_GM_PLANTILLAS_VARIABLES"
+    BEGIN Form FrmGMPlantillas
+        Width = 712
+        Height = 326
+        Text = "Generación masiva de plantillas de variables"
+        BEGIN Button BtnPlanificar
+            Left = 215
+            Top = 255
+            Width = 122
+            Height = 42
+            Text = "Ejecutar"
+            Isdefault = True
+            Tabindex = 6
+            Image = "CALC"
+            BEGIN Evclick Evclick
+                BEGIN Action_script asValidate
+                    Code = "Return(ASP_M_VALIDAR_DATENT_ONLINE())"
+                    Ontrue = "asGenerar"
+                    Onfalse = "acFIN"
+                END
+                BEGIN Action_script asGenerar
+                    Code = "ASP_M_GESTION_ONLINE()"
+                END
+                BEGIN Action_call acFIN
+                END
+            END
+        END
+        BEGIN Button BtnSalir
+            Idchannel = "ASP_EXCEL_INCIDEN_PERIOD_ROLE"
+            Idnode = "ASP_HR_PERIODO"
+            Iditem = "ASP_P_ID_PLANTILLA"
+            Left = 345
+            Top = 255
+            Width = 122
+            Height = 42
+            Text = "Salir"
+            Iscancel = True
+            Tabindex = 7
+            Border = 0
+            Image = "EXIT16_A"
+            BEGIN Evclick Evclick2
+                BEGIN Action_call Action_call5
+                    Sentence = "*O*/PrstGMPlantillas/FrmGMPlantillas.Unload()"
+                END
+            END
+        END
+        BEGIN Groupbox Groupbox1
+            Idnode = "ASP_GM_CRITERIOS_SELECC"
+            Left = 10
+            Top = 135
+            Width = 456
+            Height = 116
+            Text = " Selección de criterios de ejecución"
+            Align = "None"
+            BEGIN Listgroup lstgrpASP_ID_PLANTILLA
+                Iditem = "ASP_P_ID_PLANTILLA"
+                Watchobject = "*O*../txtASP_ID_PLANTILLA.Visible"
+                BEGIN Function List
+                    Idfuncchannel = "ASP_TR_PLANTILLAS_VAR"
+                    Idfuncnode = "ASP_TR_PLANTILLAS_VAR"
+                    Idfuncmethod = "LIST"
+                    Sourceargs = "ARG_ID_ORGANIZATION"
+                    Sourceobjs = "ID_ORGANIZATION"
+                    Mainargs = "ARG_ASP_ID_PLANTILLA"
+                    Mainobjs = "ASP_P_ID_PLANTILLA"
+                    Targetitems = "ID_ORGANIZATION,ASP_ID_PLANTILLA,ASP_N_PLANTILLA"
+                    Targetobjs = "ID_ORGANIZATION,ASP_P_ID_PLANTILLA,*O*/Presentation1/FormASP_EXCEL_INCIDEN_PERIOD_ROLE/grpPlantilla/txtN_PLANTILLA.Text"
+                    BEGIN Presentation Preload
+                        BEGIN Action_preload extDefault8
+                            Buttonnew = False
+                            Availablesteps = 12
+                            Loadchannel = False
+                            Onok = "END_OK"
+                            Oncancel = "StepUnloadForm"
+                        END
+                    END
+                    BEGIN Presentation MetaObject
+                        BEGIN Extends extDefault9
+                            Idchannel = "ASP_TR_PLANTILLAS_VAR"
+                            Idnode = "ASP_TR_PLANTILLAS_VAR"
+                            Iditem = "ASP_ID_PLANTILLA"
+                            Idinstance = "#Default_list"
+                            Inheritdata = 1
+                        END
+                    END
+                END
+                BEGIN Function Zoom
+                    Idfuncchannel = "ASP_MT_PLANTILLAS_VAR"
+                    Idfuncnode = "ASP_MT_PLANTILLAS_VAR"
+                    Idfuncmethod = "ZOOM"
+                    Sourceargs = "ARG_ID_ORGANIZATION"
+                    Sourceobjs = "ID_ORGANIZATION"
+                    Mainargs = "ARG_ASP_ID_PLANTILLA"
+                    Mainobjs = "ASP_ID_PLANTILLA"
+                    BEGIN Presentation MetaObject
+                        BEGIN Extends extDefault10
+                            Idchannel = "ASP_MT_PLANTILLAS_VAR"
+                            Idnode = "ASP_MT_PLANTILLAS_VAR"
+                            Iditem = "ASP_ID_PLANTILLA"
+                            Idinstance = "#Default_maintenance"
+                            Constructopt = "Notpreload"
+                            Inheritdata = 1
+                        END
+                    END
+                END
+                BEGIN Function Validate
+                    Idfuncchannel = "ASP_TR_PLANTILLAS_VAR"
+                    Idfuncnode = "ASP_TR_PLANTILLAS_VAR"
+                    Idfuncmethod = "VALIDATE"
+                    Sourceargs = "ARG_ID_ORGANIZATION"
+                    Sourcenullargs = "List"
+                    Sourceobjs = "ID_ORGANIZATION"
+                    Mainargs = "ARG_ASP_ID_PLANTILLA"
+                    Mainobjs = "ASP_P_ID_PLANTILLA"
+                    Targetitems = "ASP_ID_PLANTILLA,ASP_N_PLANTILLA"
+                    Targetobjs = "ASP_P_ID_PLANTILLA,*O*/Presentation1/FormASP_EXCEL_INCIDEN_PERIOD_ROLE/grpPlantilla/txtN_PLANTILLA.Text"
+                    Autoassignon1 = True
+                END
+                BEGIN Function Clear
+                    Targetobjs = "*O*/Presentation1/FormASP_EXCEL_INCIDEN_PERIOD_ROLE/grpPlantilla/txtN_PLANTILLA.Text"
+                END
+            END
+            BEGIN Toolbar Toolbar1
+                Idnode = "ASP_GM_PLANTILLAS_VARIABLES"
+                Left = 300
+                Top = 30
+                Width = 98
+                Height = 53
+                Textlist = True
+                BEGIN Toolbarbutton tlbbtnFiltros
+                    Text = "  Criterios  "
+                    Image = "ZOOMPARAM16_A"
+                    BEGIN Evclick evcConfiguracion
+                        BEGIN Action_script asGenerar
+                            Code = "If (ASP_GM_PLANTILLA_CRITERIOS.ASP_M_CARGAR() = M4_ERROR) Then Return(M4_TRUE) Else Return(M4_FALSE)"
+                            Ontrue = "acFin"
+                            Onfalse = "acMostrarEmpresa"
+                        END
+                        BEGIN Action_call acMostrarEmpresa
+                            Sentence = "*O*//exePantallas.Call(prsListaCriterios)"
+                        END
+                        BEGIN Action_call acFin
+                        END
+                    END
+                END
+            END
+            BEGIN Checkboxgroup Checkboxgroup1
+                Left = 10
+                Top = 20
+                Width = 263
+                Height = 78
+                BEGIN Checkbox Checkbox1
+                    Iditem = "ASP_P_CHK_EMPRESA"
+                    Left = 10
+                    Top = 15
+                    Width = 150
+                    Height = 20
+                    Text = "Empresa"
+                    Colindex = 1
+                    Tabindex = 3
+                    Truevalue = "1"
+                    Falsevalue = "0"
+                    BEGIN Evclick Evclick3
+                        BEGIN Action_script Action_script1
+                            Code = "ASP_P_CHK_WL = 0:ASP_P_CHK_CONVENIO = 0"
+                        END
+                    END
+                END
+                BEGIN Checkbox Checkbox2
+                    Iditem = "ASP_P_CHK_WL"
+                    Left = 10
+                    Top = 33
+                    Width = 160
+                    Height = 20
+                    Text = "Empresa + Lugar de trabajo"
+                    Colindex = 2
+                    Tabindex = 4
+                    Truevalue = "1"
+                    Falsevalue = "0"
+                    BEGIN Evclick Evclick3
+                        BEGIN Action_script Action_script1
+                            Code = "ASP_P_CHK_EMPRESA = 0:ASP_P_CHK_CONVENIO = 0"
+                        END
+                    END
+                END
+                BEGIN Checkbox Checkbox3
+                    Iditem = "ASP_P_CHK_CONVENIO"
+                    Left = 10
+                    Top = 51
+                    Width = 223
+                    Height = 20
+                    Text = "Empresa + Lugar de trabajo + Convenio"
+                    Colindex = 3
+                    Tabindex = 5
+                    Truevalue = "1"
+                    Falsevalue = "0"
+                    BEGIN Evclick Evclick3
+                        BEGIN Action_script Action_script1
+                            Code = "ASP_P_CHK_EMPRESA = 0:ASP_P_CHK_WL = 0"
+                        END
+                    END
+                END
+            END
+        END
+        BEGIN Groupbox GroupboxELEGIR_PAGA
+            Left = 10
+            Top = 5
+            Width = 671
+            Height = 121
+            Text = " Selección de paga "
+            Align = "None"
+            BEGIN Label LabelSCO_DT_ACCRUED
+                Left = 15
+                Top = 53
+                Width = 178
+                Height = 20
+                Align = "None"
+                Text = "Fecha de la paga"
+                Alignment = 1
+            END
+            BEGIN Textbox TextboxSCO_DT_ACCRUED
+                Iditem = "ASP_DT_ACCRUED"
+                Left = 202
+                Top = 51
+                Width = 71
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Colindex = 2
+                Editable = False
+            END
+            BEGIN Button ButtonPaga
+                Iditem = "ASP_P_ID_PLANTILLA"
+                Left = 560
+                Top = 26
+                Width = 99
+                Height = 71
+                Text = "&Seleccionar paga"
+                Backcolor = -2147483648
+                Colindex = 501
+                Isdefault = True
+                Tabindex = 0
+                Image = "COMPEN"
+                BEGIN Evclick EvCl
+                    BEGIN Action_call ActCall
+                        Sentence = "*O*../../../ListgroupPaga.List"
+                    END
+                END
+            END
+            BEGIN Label LabelSCO_NM_PAY
+                Left = 68
+                Top = 80
+                Width = 125
+                Height = 20
+                Align = "None"
+                Text = "Nombre de la paga"
+                Alignment = 1
+            END
+            BEGIN Textbox TextboxSCO_NM_PAY
+                Left = 202
+                Top = 78
+                Width = 351
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Editable = False
+            END
+            BEGIN Label LabelSCO_ID_PAY_TYPE
+                Left = 68
+                Top = 28
+                Width = 125
+                Height = 20
+                Text = "Tipo de paga"
+                Alignment = 1
+            END
+            BEGIN Textbox TextboxSCO_ID_PAY_TYPE
+                Iditem = "SSP_ID_TP_PAGA"
+                Left = 202
+                Top = 26
+                Width = 44
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Editable = False
+            END
+            BEGIN Textbox TextboxSCO_NM_PAY_TYPE
+                Left = 247
+                Top = 26
+                Width = 306
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Editable = False
+            END
+            BEGIN Label LabelSTD_DT_START
+                Left = 287
+                Top = 53
+                Width = 56
+                Height = 20
+                Text = "Inicio"
+                Alignment = 1
+            END
+            BEGIN Textbox TextboxSTD_DT_START
+                Iditem = "ASP_P_FEC_DESDE"
+                Left = 352
+                Top = 51
+                Width = 70
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Editable = False
+            END
+            BEGIN Label LabelSTD_DT_END
+                Left = 427
+                Top = 53
+                Width = 42
+                Height = 20
+                Text = "Fin"
+                Alignment = 1
+            END
+            BEGIN Textbox TextboxSTD_DT_END
+                Iditem = "ASP_P_FEC_HASTA"
+                Left = 480
+                Top = 51
+                Width = 73
+                Height = 20
+                Backcolor = 12632256
+                Forecolor = 0
+                Editable = False
+            END
+            BEGIN Listgroup ListgroupPaga
+                BEGIN Function List
+                    Idfuncchannel = "SCO_TR_HT_PAYS"
+                    Idfuncnode = "SCO_TR_HT_PAYS"
+                    Idfuncmethod = "LIST"
+                    Targetitems = "SCO_DT_ACCRUED,SCO_NM_PAY,SCO_DT_END,SCO_ID_PAY_TYPE,SCO_NM_PAY_TYPE,SCO_DT_START"
+                    Targetobjs = "*O*../../TextboxSCO_DT_ACCRUED.Text,*O*../../TextboxSCO_NM_PAY.Text,*O*../../TextboxSTD_DT_END.Text,*O*../../TextboxSCO_ID_PAY_TYPE.Text,*O*../../TextboxSCO_NM_PAY_TYPE.Text,*O*../../TextboxSTD_DT_START.Text"
+                    BEGIN Presentation Preload
+                        BEGIN Action_preload StepPreload_Preload
+                            Buttonnew = False
+                            Availablesteps = 12
+                            Loadchannel = False
+                        END
+                    END
+                    BEGIN Presentation MetaObject
+                        BEGIN Extends extDefault
+                            Idchannel = "SCO_TR_HT_PAYS"
+                            Idnode = "SSP_RP_CENT_PAG_SS"
+                            Idinstance = "#Default_list"
+                            Inheritdata = 1
+                        END
+                    END
+                END
+                BEGIN Function Validate
+                    Idfuncchannel = "SCO_TR_HT_PAYS"
+                    Idfuncnode = "SCO_TR_HT_PAYS"
+                END
+            END
+        END
+        BEGIN Exeblocks exbValidaciones
+            Idchannel = "ASP_GST_INTERFASE_CSOD"
+            Idnode = "ASP_GST_INTERFASE_CSOD"
+            BEGIN Presentation prsCtrlFecDesde
+                Idchannel = "ASP_GM_PLANTILLAS_VARIABLES"
+                Idnode = "ASP_GM_PLANTILLAS_VARIABLES"
+                BEGIN Action_script asValidarFechaReferencia
+                    Code = "If (IsNull(ASP_P_FEC_DESDE) = M4_FALSE) Then Return(M4_TRUE) Else Return(M4_FALSE)"
+                    Ontrue = "acFin"
+                    Onfalse = "amErrorValorNulo"
+                END
+                BEGIN Action_message amErrorValorNulo
+                    Text = "El valor del parámetro <##TM[ASP_P_FEC_DESDE]> no puede ser nulo."
+                END
+                BEGIN Action_call acFin
+                END
+            END
+            BEGIN Presentation prsGenerarInterfase
+                BEGIN Action_script asEjecutarInterfase
+                    Code = "If (ASP_M_EJECUCION_INTERFASE_SCR() = M4_SUCCESS) Then Return(M4_TRUE) Else Return(M4_FALSE)"
+                    Ontrue = "amFinCorrecto"
+                    Onfalse = "amFinError"
+                END
+                BEGIN Action_message amFinCorrecto
+                    Text = "La generación de los ficheros de la Interfase con CORNERSTONE ONDEMAND ha finalizado correctamente."
+                END
+                BEGIN Action_goto agFin
+                    Nextblock = "acFin"
+                END
+                BEGIN Action_message amFinError
+                    Text = "Se han detectado incidencias durante la generación de los ficheros de la Interfase con CORNERSTONE ONDEMAND. Revise los detalles."
+                END
+                BEGIN Action_call acFin
+                END
+            END
+        END
+        BEGIN Exeblocks ExePantallas
+            BEGIN Presentation prsListaCriterios
+                Idnode = "ASP_GM_PLANTILLA_CRITERIOS"
+                BEGIN Form frmListaCriterios
+                    Width = 646
+                    Height = 672
+                    Text = "Selección de Criterios"
+                    Askbeforeclose = False
+                    BEGIN Changer Changer2
+                        Left = 5
+                        Top = 45
+                        Width = 626
+                        Height = 581
+                        Align = "None"
+                        BEGIN Groupbox grpSeleccionCriterios
+                            Left = 5
+                            Top = 10
+                            Width = 600
+                            Height = 563
+                            Fontname = "Tahoma"
+                            Text = " Selección Criterios"
+                            Align = "None"
+                            BEGIN Patternbox ptbASP_GM_PLAN_CRITERIOS
+                                Fontname = "Tahoma"
+                                Left = 520
+                                Top = 10
+                                Width = 60
+                                Height = 18
+                                Pattern = "([#Index]/[#Count])"
+                                Alignment = 2
+                                Borderstyle = 0
+                            END
+                            BEGIN Table tblASP_GM_PLAN_CRITERIOS
+                                Fontname = "Tahoma"
+                                Left = 12
+                                Top = 35
+                                Width = 576
+                                Height = 448
+                                Align = "None"
+                                Rowheader = False
+                                BEGIN Checkbox chkASP_P_CK_SELECCION
+                                    Iditem = "ASP_P_CK_SELECCION"
+                                    Fontname = "Tahoma"
+                                    Left = 13
+                                    Top = 14
+                                    Width = 30
+                                    Height = 15
+                                    Maxcolwidth = 30
+                                    Truevalue = "S"
+                                    Falsevalue = "N"
+                                END
+                                BEGIN Textbox Textbox1
+                                    Iditem = "ASP_TP_EJECUCION"
+                                    Left = 50
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_TP_EJECUCION"
+                                    Collabel = "##TM[ASP_TP_EJECUCION]"
+                                    Editable = False
+                                    Maxcolwidth = 80
+                                END
+                                BEGIN Textbox Textbox2
+                                    Iditem = "ASP_ORD_CRITERIO"
+                                    Left = 50
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_ORD_CRITERIO"
+                                    Collabel = "##TM[ASP_ORD_CRITERIO]"
+                                    Editable = False
+                                    Maxcolwidth = 80
+                                END
+                                BEGIN Textbox txtASP_ID_PLANTILLA
+                                    Iditem = "ASP_ID_PLANTILLA"
+                                    Left = 133
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_ID_PLANTILLA"
+                                    Collabel = "##TM[ASP_ID_PLANTILLA]"
+                                    Editable = False
+                                    Maxcolwidth = 80
+                                END
+                                BEGIN Textbox txtASP_ID_LEG_ENT
+                                    Iditem = "ASP_ID_LEG_ENT"
+                                    Left = 215
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_ID_LEG_ENT"
+                                    Collabel = "##TM[ASP_ID_LEG_ENT]"
+                                    Editable = False
+                                    Maxcolwidth = 400
+                                END
+                                BEGIN Textbox txtASP_ID_WORK_LOCATION
+                                    Iditem = "ASP_ID_WORK_LOCATION"
+                                    Left = 275
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_ID_WORK_LOCATION"
+                                    Collabel = "##TM[ASP_ID_WORK_LOCATION]"
+                                    Editable = False
+                                    Maxcolwidth = 400
+                                END
+                                BEGIN Textbox txtASP_ID_CONVENIO
+                                    Iditem = "ASP_ID_CONVENIO"
+                                    Left = 355
+                                    Top = 14
+                                    Width = 80
+                                    Height = 20
+                                    Fontname = "Tahoma"
+                                    Dependson = "ASP_ID_CONVENIO"
+                                    Collabel = "##TM[ASP_ID_CONVENIO]"
+                                    Editable = False
+                                    Maxcolwidth = 400
+                                END
+                            END
+                            BEGIN Button Button1
+                                Left = 465
+                                Top = 500
+                                Width = 122
+                                Height = 42
+                                Text = "Cancelar"
+                                Iscancel = True
+                                Tabindex = 7
+                                Border = 0
+                                Image = "EXIT16_A"
+                                BEGIN Evclick Evclick2
+                                    BEGIN Action_call Action_call5
+                                        Sentence = "*O*/PrstGMPlantillas/FrmGMPlantillas/ExePantallas/prsListaCriterios/frmListaCriterios.Unload()"
+                                    END
+                                END
+                            END
+                            BEGIN Button Button2
+                                Left = 335
+                                Top = 500
+                                Width = 122
+                                Height = 42
+                                Text = "Aceptar"
+                                Iscancel = True
+                                Tabindex = 7
+                                Border = 0
+                                Image = "CHECKNEW16_A"
+                                BEGIN Evclick Evclick2
+                                    BEGIN Action_call Action_call5
+                                        Sentence = "*O*/PrstGMPlantillas/FrmGMPlantillas/ExePantallas/prsListaCriterios/frmListaCriterios.Unload()"
+                                    END
+                                END
+                            END
+                        END
+                    END
+                END
+            END
+        END
+    END
+END
