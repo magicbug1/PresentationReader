@@ -1,27 +1,34 @@
 package com.squarpoint.cegit.presentation
 
-import java.io.EOFException
 import java.io.File
 import java.io.FileInputStream
+import java.nio.ByteBuffer
 
 
 class PresentationReader(name: String = "") {
     var fileName: String = name
     var fileInputStream: FileInputStream? = null
-    fun openFile() {
+    private var fileContentBuffer: ByteArray? = null
+    fun getData() {
         fileInputStream = File(fileName).inputStream()
+        fileContentBuffer = fileInputStream!!.readAllBytes()
+        fileInputStream!!.close()
     }
 
-    fun readChar(): Char {
-        if (fileInputStream == null) {
-            println("File inputstream is invalid")
-            throw EOFException("Invalid stream [$fileName]")
-        }
-        return fileInputStream!!.read().toChar()
+    fun readByte(): UByte {
+        return fileContentBuffer!![0].toUByte()
+    }
+
+    fun getObjectSize(): Long {
+        val sizeArray = byteArrayOf(0,0,0,0) + fileContentBuffer!!.copyOfRange(0, 4)
+        val rslt = ByteBuffer.wrap(sizeArray).long
+        return rslt
     }
 }
 
 fun main() {
-    val pReader = PresentationReader("test")
-    println(pReader.readChar())
+   val pReader = PresentationReader("src/main/resources/ASP_GM_PLANTILLAS_VARIABLES.presentation.hex")
+    pReader.getData()
+    val size = pReader.getObjectSize()
+    println("$size --> 0x${String.format("%X", size)}")
 }

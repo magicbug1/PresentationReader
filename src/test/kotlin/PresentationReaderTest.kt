@@ -13,28 +13,33 @@ internal class PresentationReaderTest {
     @BeforeEach
     fun setUp() {
         pReader = PresentationReader(testFileName)
+        pReader.getData()
     }
 
     @Test
     fun openFile_whenFileNotExists_throwsFileNotFoundException() {
         assertThrows<FileNotFoundException> {
             pReader.fileName ="Not a file"
-            pReader.openFile()
+            pReader.getData()
         }
     }
 
     @Test
     fun openFile_whenFileExists_doesNotThrowException() {
         assertDoesNotThrow {
-            pReader.openFile()
+            pReader.getData()
         }
     }
 
     @Test
-    fun getChar_returnsNextChar() {
-        pReader.openFile()
-        val c = pReader.readChar()
+    fun readChar_returnsNextChar() {
+        val c = pReader.readByte()
         println("c = [$c]")
-        assert('0' == c)
+        assert('0'.code == c.toInt())
+    }
+
+    @Test
+    fun readInt_returnsNextInt() {
+        pReader.getObjectSize()
     }
 }

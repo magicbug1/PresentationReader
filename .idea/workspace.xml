@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a5d9851-cfe7-474b-957a-a4f0d9aa8a2d" name="Changes" comment="work on file opening and readchar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/PresentationReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PresentationReader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/PresentationReaderTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/PresentationReaderTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +46,11 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "G:/Mi unidad/java/Cegit/PresentationReader/src/test/resources"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "kotlin"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -58,53 +64,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PresentationReaderTest (5)">
+  <component name="RunManager" selected="Kotlin.PresentationReaderKt">
     <configuration name="PresentationReaderTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PresentationReader" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
-      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PresentationReaderTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PresentationReader" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
-      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PresentationReaderTest (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PresentationReader" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
-      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PresentationReaderTest (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PresentationReader" />
       <extension name="coverage">
         <pattern>
@@ -134,13 +95,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PresentationReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PresentationReader" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.squarpoint.cegit.presentation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.squarpoint.cegit.presentation" />
+      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PresentationReaderKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.squarpoint.cegit.presentation.PresentationReaderKt" />
+      <module name="PresentationReader" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="scratch.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="PresentationReader" />
+      <option name="filePath" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.kts" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PresentationReaderTest (5)" />
-        <item itemvalue="JUnit.PresentationReaderTest (4)" />
-        <item itemvalue="JUnit.PresentationReaderTest (3)" />
-        <item itemvalue="JUnit.PresentationReaderTest (2)" />
+        <item itemvalue="Kotlin.PresentationReaderKt" />
+        <item itemvalue="Kotlin script (Beta).scratch.kts" />
         <item itemvalue="JUnit.PresentationReaderTest (1)" />
+        <item itemvalue="JUnit.PresentationReaderTest" />
+        <item itemvalue="JUnit.PresentationReaderTest (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +164,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684262160801</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="work on file opening and readchar">
+      <created>1684297336634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684297336634</updated>
+    </task>
+    <task id="LOCAL-00005" summary="work on file opening and readchar">
+      <created>1684301455658</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684301455658</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
