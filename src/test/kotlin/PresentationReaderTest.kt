@@ -19,7 +19,7 @@ internal class PresentationReaderTest {
     @Test
     fun openFile_whenFileNotExists_throwsFileNotFoundException() {
         assertThrows<FileNotFoundException> {
-            pReader.fileName ="Not a file"
+            pReader.fileName = "Not a file"
             pReader.getData()
         }
     }
@@ -41,5 +41,25 @@ internal class PresentationReaderTest {
     @Test
     fun readInt_returnsNextInt() {
         pReader.getObjectSize()
+    }
+
+    @Test
+    fun getPresentationSize_getsCorrectValue() {
+        pReader.readShort()
+        val objectSize = pReader.readShort()
+        assert(objectSize.toInt() + 4 == pReader.getPresentationSize())
+    }
+
+    @Test
+    fun readShort_readsShortAsTwoBytes() {
+        val shortRead = pReader.readShort()
+        assert(shortRead.toInt() == 0x3082)
+    }
+
+    @Test
+    fun readShort_readsNextValueToo() {
+        val shortRead = pReader.readShort()
+        val nextShortRead = pReader.readShort()
+        assert(shortRead != nextShortRead)
     }
 }
